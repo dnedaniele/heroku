@@ -14,7 +14,7 @@ app.use(express.json());
 
 // array for reservation
 
-let reservations = new Array(); /// new Array(5); array with a limit of 5 elements
+let reservations = []; /// new Array(5); array with a limit of 5 elements
 
 //array for waiting list
 
