@@ -1,0 +1,23 @@
+{
+  "name": "heroku",
+  "version": "1.0.0",
+  "description": "groupwork",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dnedaniele/heroku.git"
+  },
+  "author": "daniele and hristina",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dnedaniele/heroku/issues"
+  },
+  "homepage": "https://github.com/dnedaniele/heroku#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
