@@ -18,6 +18,7 @@ app.use(express.json());
 
 let reservations = new Array(5);  /// new Array(5); array with a limit of 5 elements
 
+
 //array for waiting list
 
 let waitingList = [];
@@ -48,7 +49,6 @@ app.get("/api/tables", function (req, res) {
 
 app.post("/api/tables", function (req, res) {
     var newReservation = req.body;
-
 
 
     // We then add the json the user sent to the character array
