@@ -40,6 +40,19 @@ app.get("/tables", function (req, res) {
 
 //**************************************************************** */
 
+app.post("/api/tables", function (req, res) {
+    var newReservation = req.body;
+
+    console.log(newReservation);
+
+    // We then add the json the user sent to the character array
+    reservations.push(newReservation);
+
+    // We then display the JSON to the users
+    res.json(newReservation);
+});
+
+
 // Listening the PORT
 // =============================================================
 app.listen(PORT, function () {
