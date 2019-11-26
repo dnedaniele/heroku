@@ -14,7 +14,7 @@ app.use(express.json());
 
 // array for reservation
 
-let reservations = new Array(5); /// new Array(5); array with a limit of 5 elements
+let reservations = new Array(); /// new Array(5); array with a limit of 5 elements
 
 //array for waiting list
 
@@ -22,29 +22,29 @@ let waitingList = [];
 
 /********************************************************* */
 // get homepage
-app.get("/", function(req, res) {
+app.get("/", function (req, res) {
   res.sendFile(path.join(__dirname, "home.html"));
 });
 
 // get reserve
-app.get("/reserve", function(req, res) {
+app.get("/reserve", function (req, res) {
   res.sendFile(path.join(__dirname, "reserve.html"));
 });
 
 // get tables
-app.get("/tables", function(req, res) {
+app.get("/tables", function (req, res) {
   res.sendFile(path.join(__dirname, "tables.html"));
 });
 
 //display tables
 
-app.get("/api/tables", function(req, res) {
+app.get("/api/tables", function (req, res) {
   return res.json(reservations);
 });
 
 //**************************************************************** */
 
-app.post("/api/tables", function(req, res) {
+app.post("/api/tables", function (req, res) {
   var newReservation = req.body;
 
   // We then add the json the user sent to the character array
@@ -57,6 +57,6 @@ app.post("/api/tables", function(req, res) {
 
 // Listening the PORT
 // =============================================================
-app.listen(PORT, function() {
+app.listen(PORT, function () {
   console.log("App listening on PORT " + PORT);
 });
