@@ -38,16 +38,23 @@ app.get("/tables", function (req, res) {
     res.sendFile(path.join(__dirname, "tables.html"));
 });
 
+//display tables
+
+app.get("/api/tables", function (req, res) {
+    return res.json(reservations);
+});
+
 //**************************************************************** */
 
 app.post("/api/tables", function (req, res) {
     var newReservation = req.body;
 
-    console.log(newReservation);
+
 
     // We then add the json the user sent to the character array
     reservations.push(newReservation);
 
+    console.log(reservations);
     // We then display the JSON to the users
     res.json(newReservation);
 });
