@@ -20,33 +20,41 @@ let waitingList = [];
 
 /********************************************************* */
 // get homepage
-app.get("/", function(req, res) {
+app.get("/", function (req, res) {
   res.sendFile(path.join(__dirname, "home.html"));
 });
 
 // get reserve
-app.get("/reserve", function(req, res) {
+app.get("/reserve", function (req, res) {
   res.sendFile(path.join(__dirname, "reserve.html"));
 });
 
 // get tables
-app.get("/tables", function(req, res) {
+app.get("/tables", function (req, res) {
   res.sendFile(path.join(__dirname, "tables.html"));
 });
 
 // display reservations array
-app.get("/api/tables", function(req, res) {
+app.get("/api/tables", function (req, res) {
   return res.json(reservations);
 });
 
 // display the waiting list array
-app.get("/api/waitlist", function(req, res) {
+app.get("/api/waitlist", function (req, res) {
   return res.json(waitingList);
+});
+
+//clear the lists
+
+app.get("/tables/clear", function (req, res) {
+  reservations = [];
+  waitingList = [];
+  return res.json({ type: "CLEAR" });
 });
 
 //**************************************************************** */
 
-app.post("/api/tables", function(req, res) {
+app.post("/api/tables", function (req, res) {
   var newReservation = req.body;
 
   // We then add the json the user sent to the reservations array or to the waiting list
@@ -61,6 +69,6 @@ app.post("/api/tables", function(req, res) {
 
 // Listening the PORT
 // =============================================================
-app.listen(PORT, function() {
+app.listen(PORT, function () {
   console.log("App listening on PORT " + PORT);
 });
