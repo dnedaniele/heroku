@@ -52,11 +52,11 @@ app.post("/api/tables", function(req, res) {
   // We then add the json the user sent to the reservations array or to the waiting list
   if (reservations.length < 5) {
     reservations.push(newReservation);
-    return res.json({ type: "reservation" });
+    return res.json({ type: "CONFIRMED" });
   }
 
   waitingList.push(newReservation);
-  return res.json({ type: "waiting list" });
+  return res.json({ type: "WAITING" });
 });
 
 // Listening the PORT

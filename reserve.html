@@ -113,7 +113,7 @@
         url: "/api/tables",
         data: tableObject
       }).then(function(response) {
-        if (response.type === "reservation") {
+        if (response.type === "CONFIRMED") {
           confirm("You have a reservation!");
         } else {
           confirm("You are on the waiting list!");
