@@ -13,50 +13,54 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 // array for reservation
+let reservations = []; // reservations array with a limit of 5 elements
 
-let reservations = []; /// new Array(5); array with a limit of 5 elements
-
-//array for waiting list
-
+//array for the waiting list
 let waitingList = [];
 
 /********************************************************* */
 // get homepage
-app.get("/", function (req, res) {
+app.get("/", function(req, res) {
   res.sendFile(path.join(__dirname, "home.html"));
 });
 
 // get reserve
-app.get("/reserve", function (req, res) {
+app.get("/reserve", function(req, res) {
   res.sendFile(path.join(__dirname, "reserve.html"));
 });
 
 // get tables
-app.get("/tables", function (req, res) {
+app.get("/tables", function(req, res) {
   res.sendFile(path.join(__dirname, "tables.html"));
 });
 
-//display tables
-
-app.get("/api/tables", function (req, res) {
+// display reservations array
+app.get("/api/tables", function(req, res) {
   return res.json(reservations);
+});
+
+// display the waiting list array
+app.get("/api/waitlist", function(req, res) {
+  return res.json(waitingList);
 });
 
 //**************************************************************** */
 
-app.post("/api/tables", function (req, res) {
+app.post("/api/tables", function(req, res) {
   var newReservation = req.body;
 
-  // We then add the json the user sent to the character array
-  reservations.push(newReservation);
+  // We then add the json the user sent to the reservations array or to the waiting list
+  if (reservations.length < 5) {
+    reservations.push(newReservation);
+    return res.json({ type: "reservation" });
+  }
 
-  console.log(reservations);
-  // We then display the JSON to the users
-  res.json(newReservation);
+  waitingList.push(newReservation);
+  return res.json({ type: "waiting list" });
 });
 
 // Listening the PORT
 // =============================================================
-app.listen(PORT, function () {
+app.listen(PORT, function() {
   console.log("App listening on PORT " + PORT);
 });
